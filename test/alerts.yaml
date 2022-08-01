@@ -1,17 +1,40 @@
 ---
 alerts:
-  -
-    name: 'zero'
-    expr: 'test'
-    for: '2m'
-    severity: 'WARN'
-    emailSubject: 'name_first'
-    summary: 'some summary'
-  -
-    name: 'one'
-    expr: 'ble'
-    for: '33m'
-    severity: 'ERROR'
-    emailSubject: '3rd'
-    summary: 'something else'
-
+  defaults:
+    - name: name_first
+      expr: first_expr
+      severity: ERROR
+    - name: name_second
+      expr: sec_expr
+      severity: WARN
+  custom_alerts:
+    environment:
+        prd:
+        - name: name_first
+          expr: some other
+          severity: INFO
+        - name: 3rd
+          expr: ble
+          severity: INFO
+        acc:
+        - name: name_first
+          expr: some other
+          severity: INFO
+        - name: 3rd
+          expr: ble
+          severity: INFO
+    cluster:
+        1_tst:
+        - name: name_first
+          expr: some other
+          severity: INFO
+        - name: 3rd
+          expr: ble
+          severity: INFO
+        2_acc:
+        - name: name_first
+          expr: some other
+          severity: INFO
+        - name: 3rd
+          expr: ble
+          severity: INFO
