@@ -1,0 +1,31 @@
+  rules:
+{%- for item in alerts %}
+{%- if item['for']  is defined and item['for']| length > 0 -%}
+{%- set for = item['for'] -%}
+{% else %}
+{%- set for = '2m # No value provided using default' -%}
+{%- endif -%}
+{%- if item['severity']  is defined and item['severity']| length > 0 -%}
+{%- set severity = item['severity'] -%}
+{% else %}
+{%- set severity = 'ERROR # No value provided using default' -%}
+{%- endif -%}
+{%- if item['summary']  is defined and item['summary']| length > 0 -%}
+{%- set summary = item['summary'] -%}
+{% else %}
+{%- set summary = 'Triggerd by: ' ~ item['expr'] ~ ' # No value provided using default' -%}
+{%- endif -%}
+{%- if item['emailSubject']  is defined and item['emailSubject']| length > 0 -%}
+{% set emailSubject = item['emailSubject'] -%}
+{% else %}
+{%- set emailSubject = 'Triggered by: ' ~ item['expr'] ~ ' # No value provided using default' %}
+{%- endif %}
+  - alert: {{ item['name'] }}
+    expr: {{ item['expr'] }}
+    for: {{ for }}
+    labels:
+      severity: {{ severity }}
+    annotations:
+      summary: {{ summary }}
+      emailSubject: {{ emailSubject }}
+{%- endfor -%}
