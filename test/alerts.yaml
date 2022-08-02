@@ -14,4 +14,3 @@ alerts:
     severity: 'ERROR'
     emailSubject: '3rd'
     summary: 'something else'
-

@@ -4,14 +4,10 @@ from typing import Dict
 
 from schema import Optional, Schema, SchemaError
 from jinja2 import Template, TemplateError
+
 import yaml
 import logging
 
-
-# Class starts empty
-# you can add one file that will contain all data
-# alert file contains defaults
-# load another file that contains custom alerts and default alerts are overwritten
 
 def extract_alerts(content):
     return content['alerts']
