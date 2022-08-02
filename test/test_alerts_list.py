@@ -51,6 +51,7 @@ alerts_basic = """  rules:
       emailSubject: 3rd"""
 
 
+
 @pytest.fixture
 def alerts():
     alerts = Alerts(filename=config_file)
