@@ -1,4 +1,3 @@
-
 import pkgutil
 from pathlib import Path
 from typing import Dict
@@ -23,7 +22,6 @@ console_handler.setFormatter(console_formatter)
 logger = logging.getLogger(__name__)
 logger.addHandler(console_handler)
 logger.setLevel(logging.INFO)
-
 
 
 class Alerts:
