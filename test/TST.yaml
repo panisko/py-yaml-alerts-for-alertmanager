@@ -1,0 +1,17 @@
+---
+alerts:
+  -
+    name: 'zero'
+    expr: "changed"
+    for: 5m
+    emailSubject: name_first
+  -
+    name: 'two'
+    expr: some-other expression
+  -
+    name: 'zero'
+    expr: "again_changed"
+    for: 10m
+    emailSubject: name_first
+
+
